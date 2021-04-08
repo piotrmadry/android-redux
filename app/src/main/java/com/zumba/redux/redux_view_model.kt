@@ -16,11 +16,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.reflect.KProperty1
 
-// Hi Neo.
-// I was looking for you.
-// It's funny coding via browser :D
-// Serio działa przez przegladarke?
-
 abstract class ReduxViewModel<State, Effects : ReduxEffects>(initialState: State) : ViewModel() {
     private val state = MutableStateFlow(initialState)
     private val effects = MutableSharedFlow<Effects>()
@@ -87,3 +82,4 @@ abstract class ReduxViewModel<State, Effects : ReduxEffects>(initialState: State
         launch { this@ReduxViewModel.withState(block) }
     }
 }
+//:DD 
