@@ -1,4 +1,4 @@
-package com.zumba.redux
+package com.zumba.redux.repository
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

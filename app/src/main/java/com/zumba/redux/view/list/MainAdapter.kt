@@ -1,14 +1,15 @@
-package com.zumba.redux
+package com.zumba.redux.view.list
 
-import ViewItem
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.zumba.redux.R
+import com.zumba.redux.usecase.ViewItem
+import com.zumba.redux.view.DetailsActivity
 
-class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var list: List<ViewItem> = listOf()
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -21,7 +22,7 @@ class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val textView = holder.itemView.findViewById<TextView>(R.id.text_view)
         textView.text = list[position].name
         textView.setOnClickListener {
-            textView.context.startActivity(Intent(textView.context, Details::class.java)
+            textView.context.startActivity(Intent(textView.context, DetailsActivity::class.java)
                 .apply { putExtra("id", list[position].id) })
         }
     }

@@ -1,4 +1,4 @@
-package com.zumba.redux
+package com.zumba.redux.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.zumba.redux
+package com.zumba.redux.base
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
