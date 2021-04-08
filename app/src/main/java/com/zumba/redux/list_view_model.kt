@@ -1,6 +1,6 @@
 package com.zumba.redux
 
-import GetItemsUseCase
+import FlowGetItemsUseCase
 import ViewItem
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -10,7 +10,7 @@ data class ListState(
     val error: BasicError? = null
 )
 
-class ListViewModel(private val getItemsUseCase: GetItemsUseCase) : ReduxViewModel<ListState, NoEffects>(ListState()) {
+class ListViewModel(private val getItemsUseCase: FlowGetItemsUseCase) : ReduxViewModel<ListState, NoEffects>(ListState()) {
     
     init {
        getData()

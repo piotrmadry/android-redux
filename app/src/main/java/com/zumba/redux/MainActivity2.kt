@@ -1,5 +1,6 @@
 package com.zumba.redux
 
+import FlowGetItemsUseCase
 import GetItemsUseCase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity2 : AppCompatActivity() {
     
-    val viewModel: ListViewModel by viewModel { ListViewModel(GetItemsUseCase(Repository())) }
+    val viewModel: ListViewModel by viewModel { ListViewModel(FlowGetItemsUseCase(Repository)) }
     var adapter: Adapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class MainActivity2 : AppCompatActivity() {
         recyclerView.adapter = adapter
     
         viewModel.currentState.observe(this){ render(it) }
-    
+
         val button = findViewById<Button>(R.id.main_resfresh)
         button.setOnClickListener {
             viewModel.refresh()
@@ -36,6 +37,7 @@ class MainActivity2 : AppCompatActivity() {
     
         
     }
+
     fun render(listState: ListState) {
         adapter?.bindList(listState.list)
     }
