@@ -10,14 +10,12 @@ object Repository {
     private val items: MutableList<Item> = (0..99).map { iterator -> Item(id = iterator, name = "Name $iterator") }.toMutableList()
     
     suspend fun getItems() = items.map { it.copy(name = "${it.name} ${System.currentTimeMillis()}") }
-    suspend fun getList(): List<Item> = items
     
     fun getListFlow(): Flow<List<Item>> =
         refresh.onStart { emit(Unit) }.flatMapLatest {
-            flow {emit(items.map { it.copy(name = "${it.name} ${System.currentTimeMillis()}") })}
+            flow {emit(getItems())}
         }
 
-    
     suspend fun removeItem(id: Int) {
         delay(1000)
         items.removeAll { item -> item.id == id }
