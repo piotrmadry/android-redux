@@ -1,4 +1,4 @@
-package com.zumba.redux
+package com.zumba.redux.base
 
 import arrow.core.Either
 import kotlinx.coroutines.flow.Flow

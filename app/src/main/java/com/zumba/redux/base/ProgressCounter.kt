@@ -1,11 +1,6 @@
-package com.zumba.redux
+package com.zumba.redux.base
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 import java.util.concurrent.atomic.AtomicInteger
 
 class ProgressCounter {
@@ -20,11 +15,18 @@ class ProgressCounter {
     }
     
     fun removeProgress() {
-        progressState.value = count.decrementAndGet()
+        if(count.get() > 0){
+            progressState.value = count.decrementAndGet()
+        }
     }
 }
 
-fun <T> Flow<T>.watchProgress(counter: ProgressCounter): Flow<T> {
+fun <T> Flow<T>.watchProgressOnCompletion(counter: ProgressCounter): Flow<T> {
     return onStart { counter.addProgress() }
         .onCompletion { counter.removeProgress() }
+}
+
+fun <T> Flow<T>.watchProgressOnEach(counter: ProgressCounter): Flow<T> {
+    return onStart { counter.addProgress() }
+        .onEach { counter.removeProgress() }
 }

@@ -1,9 +1,11 @@
-package com.zumba.redux
+package com.zumba.redux.viewmodel
 
-import RemoveItemUseCase
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.collect
+import com.zumba.redux.base.ReduxEffects
+import com.zumba.redux.base.ReduxViewModel
+import com.zumba.redux.usecase.RemoveItemUseCase
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
 class FinishActivity : ReduxEffects
 

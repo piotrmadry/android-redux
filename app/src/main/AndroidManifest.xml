@@ -10,10 +10,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Redux">
         <activity
-                android:name=".Details"
+                android:name=".view.DetailsActivity"
                 android:label="@string/title_activity_details"
                 android:theme="@style/Theme.Redux.NoActionBar"></activity>
-        <activity android:name=".MainActivity2">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
